@@ -41,18 +41,78 @@ class _HomePageState extends State<HomePage> {
           children: [
             //====Header Part of drawer====
             UserAccountsDrawerHeader(
-                accountName: Text("Joel Crawford"),
-                accountEmail: Text("joelcrawford30@gmail.com"),
+              accountName: Text("Joel Crawford"),
+              accountEmail: Text("joelcrawford30@gmail.com"),
               currentAccountPicture: GestureDetector(
                 child: CircleAvatar(
                   backgroundColor: Colors.grey,
                   child: Icon(
-                    Icons.person, color: Colors.white,
+                    Icons.person,
+                    color: Colors.white,
                   ),
                 ),
               ),
+              decoration: BoxDecoration(color: Colors.pink),
             ),
 
+            //=======Body========
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                title: Text('Home'),
+                leading: Icon(Icons.home),
+              ),
+            ),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                title: Text('My Account'),
+                leading: Icon(Icons.person),
+              ),
+            ),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                title: Text('My Orders'),
+                leading: Icon(Icons.shopping_basket),
+              ),
+            ),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                title: Text('Categories'),
+                leading: Icon(Icons.dashboard),
+              ),
+            ),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                title: Text('Favourites'),
+                leading: Icon(Icons.favorite),
+              ),
+            ),
+
+            Divider(),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                title: Text('Settings'),
+                leading: Icon(Icons.settings),
+              ),
+            ),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                title: Text('About'),
+                leading: Icon(Icons.help),
+              ),
+            ),
           ],
         ),
       ),
