@@ -13,6 +13,7 @@ void main(){
 
 
 
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -23,11 +24,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       appBar: AppBar(
-        title: const Text('ShopApp'),
+        backgroundColor: Colors.red,
+        title: const Text('Fashapp'),
+        actions: [
+          new  IconButton( icon: Icon(Icons.search, color: Colors.white,), onPressed: (){}),
+          new  IconButton( icon: Icon(Icons.shopping_cart, color: Colors.white,), onPressed: (){})
+        ],
       ),
     );
   }
