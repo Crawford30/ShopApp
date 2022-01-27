@@ -19,11 +19,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    Widget image_carousel = Container(
+    Widget imageCarousel = SizedBox(
       height: 200.0,
       child: Carousel(
         boxFit: BoxFit.cover,
-        images: [
+        images: const [
           AssetImage('images/c1.jpg'),
           AssetImage('images/m1.jpeg'),
           AssetImage('images/m2.jpg'),
@@ -141,9 +141,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-      body: new ListView(
+      body: ListView(
         children: [
-          image_carousel
+          imageCarousel
         ],
       ),
     );
