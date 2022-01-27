@@ -87,7 +87,27 @@ class _ProductDetailsState extends State<ProductDetails> {
               //========The Size Button=====
               Expanded(
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text("Size"),
+                            content: Text("Choose the size"),
+                            actions: [
+                              MaterialButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop(context);
+                                },
+                                child: Text(
+                                  "Close",
+                                  style: TextStyle(color: Colors.green),
+                                ),
+                              )
+                            ],
+                          );
+                        });
+                  },
                   color: Colors.white,
                   textColor: Colors.grey,
                   elevation: 0.2,
@@ -102,7 +122,27 @@ class _ProductDetailsState extends State<ProductDetails> {
 
               Expanded(
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text("Colors"),
+                            content: Text("Choose a color"),
+                            actions: [
+                              MaterialButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop(context);
+                                },
+                                child: Text(
+                                  "Close",
+                                  style: TextStyle(color: Colors.green),
+                                ),
+                              )
+                            ],
+                          );
+                        });
+                  },
                   color: Colors.white,
                   textColor: Colors.grey,
                   elevation: 0.2,
@@ -117,7 +157,27 @@ class _ProductDetailsState extends State<ProductDetails> {
 
               Expanded(
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text("Quantity"),
+                            content: Text("Choose the quantity"),
+                            actions: [
+                              MaterialButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop(context);
+                                },
+                                child: Text(
+                                  "Close",
+                                  style: TextStyle(color: Colors.green),
+                                ),
+                              )
+                            ],
+                          );
+                        });
+                  },
                   color: Colors.white,
                   textColor: Colors.grey,
                   elevation: 0.2,
@@ -155,6 +215,70 @@ class _ProductDetailsState extends State<ProductDetails> {
                     Icons.favorite_border,
                     color: Colors.red,
                   ))
+            ],
+          ),
+
+          Divider(
+            color: Colors.red,
+          ),
+          ListTile(
+            title: Text("Product Details"),
+            subtitle: Text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor nisi non leo congue, in viverra sapien dictum. Proin fermentum nisl et lectus dictum, vitae iaculis felis auctor. Nunc nisl leo, elementum ut elementum blandit, viverra nec lacus. Suspendisse ut augue aliquam justo luctus maximus. Ut porttitor in nisl sit amet pretium. Nulla eleifend purus arcu, id hendrerit mauris sollicitudin nec. Ut suscipit consequat purus tincidunt sollicitudin. Vestibulum lorem sem, viverra ut nisl id, porta convallis ipsum. Etiam pellentesque rutrum risus vitae facilisis. Aenean purus lacus, porttitor quis urna non, dictum lobortis odio. Ut vitae tempus nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin vulputate ligula quis fringilla consequat. Integer blandit, dui eu ornare faucibus, leo purus aliquet urna, et convallis magna tortor sit amet justo. Curabitur eget interdum risus."),
+          ),
+
+          Divider(
+            color: Colors.red,
+          ),
+
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
+                child: Text(
+                  "Product Name",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Text(widget.product_detail_name),
+              )
+            ],
+          ),
+
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
+                child: Text(
+                  "Product Brand",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
+
+              //====TODO:: REMEMBER TO CREATE PRODUCT BRAND
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Text("Brand X"),
+              )
+            ],
+          ),
+
+          //======ADD THE PRODUCT CONDITION======
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
+                child: Text(
+                  "Product Condition",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Text("NEW"),
+              )
             ],
           ),
         ],
