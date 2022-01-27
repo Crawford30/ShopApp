@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
+//====My Own imports
+import 'package:shopapp/components/horizontal_listview.dart';
+
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -18,7 +21,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     Widget imageCarousel = SizedBox(
       height: 200.0,
       child: Carousel(
@@ -37,7 +39,6 @@ class _HomePageState extends State<HomePage> {
         dotSize: 4.0,
         indicatorBgPadding: 2.0,
       ),
-
     );
 
     return Scaffold(
@@ -126,7 +127,10 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Settings'),
-                leading: Icon(Icons.settings, color: Colors.blue,),
+                leading: Icon(
+                  Icons.settings,
+                  color: Colors.blue,
+                ),
               ),
             ),
 
@@ -134,16 +138,28 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('About'),
-                leading: Icon(Icons.help, color: Colors.blue,),
+                leading: Icon(
+                  Icons.help,
+                  color: Colors.blue,
+                ),
               ),
             ),
           ],
         ),
       ),
-
       body: ListView(
         children: [
-          imageCarousel
+          //=======Image Carousel begins here =====
+          imageCarousel,
+
+          //========Padding widget=====
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Categories"),
+          ),
+
+          //======Horizontal List View begins here =====
+          HorizontalList(),
         ],
       ),
     );
