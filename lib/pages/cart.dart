@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+//===My Imports====
+import 'package:shopapp/components/cart_products.dart';
+
 class Cart extends StatefulWidget {
   const Cart({Key? key}) : super(key: key);
 
@@ -24,6 +27,7 @@ class _CartState extends State<Cart> {
               onPressed: () {}),
         ],
       ),
+      body: CartProducts(),
       bottomNavigationBar: Container(
         color: Colors.white,
         child: Row(
