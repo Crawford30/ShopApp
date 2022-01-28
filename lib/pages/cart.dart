@@ -35,14 +35,15 @@ class _CartState extends State<Cart> {
               ),
             ),
             Expanded(
-                child: MaterialButton(
-              onPressed: () {},
-              child: Text(
-                "Check Out",
-                style: TextStyle(color: Colors.white),
+              child: MaterialButton(
+                onPressed: () {},
+                child: Text(
+                  "Check Out",
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.red,
               ),
-              color: Colors.red,
-            ))
+            ),
           ],
         ),
       ),
