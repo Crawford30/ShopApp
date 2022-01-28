@@ -66,78 +66,92 @@ class SingleCartProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ListTile(
-        //============LEADING SECTION==============
-        leading: Image.asset(
-          cart_prod_picture,
-          width: 80.0,
-          height: 80.0,
-        ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ListTile(
+          //============LEADING SECTION==============
+          leading: Container(
+            width: 80.0,
+            height: 80.0,
+            child: Image.asset(
+              cart_prod_picture,
+              fit: BoxFit.fill,
+            ),
+          ),
 
-        //============TITLE SECTION=========
-        title: Text(cart_prod_name),
+          //============TITLE SECTION=========
+          title: Text(cart_prod_name),
 
-        //==========SUBTITLE SECTION==========
-        subtitle: Column(
-          children: [
-            //=====ROW INSIDE COLUMN====
-            Row(
+          //==========SUBTITLE SECTION==========
+          subtitle: Column(
+            children: [
+              //=====ROW INSIDE COLUMN====
+              Row(
+                children: [
+                  //=======This Section is for the size of the product =====
+                  Padding(
+                    padding: const EdgeInsets.all(0.0),
+                    child: Text("Size:"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      cart_prod_size,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+
+                  //=======This Section is for the color of the product =====
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14.0, 8.0, 8.0, 8.0),
+                    child: Text("Color:"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      cart_prod_color,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ],
+              ),
+
+              //==========THIS SECTION IS THE PRODUCT PRICE=====
+              Container(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "\$${cart_prod_price}",
+                  style: TextStyle(
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
+                ),
+              ),
+            ],
+          ),
+          trailing: FittedBox(
+            fit: BoxFit.fill,
+            child: Column(
               children: [
-                //=======This Section is for the size of the product =====
-                Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Text("Size:"),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.arrow_drop_up),
+                  iconSize: 68,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    cart_prod_size,
-                    style: TextStyle(color: Colors.red),
-                  ),
+                Text(
+                  "${cart_prod_qty}",
+                  style: TextStyle(fontSize: 30.0),
                 ),
-
-                //=======This Section is for the color of the product =====
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(14.0, 8.0, 8.0, 8.0),
-                  child: Text("Color:"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    cart_prod_color,
-                    style: TextStyle(color: Colors.red),
-                  ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.arrow_drop_down),
+                  iconSize: 68,
                 ),
               ],
             ),
-
-            //==========THIS SECTION IS THE PRODUCT PRICE=====
-            Container(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "\$${cart_prod_price}",
-                style: TextStyle(
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red),
-              ),
-            ),
-          ],
-        ),
-        trailing: FittedBox(
-          fit: BoxFit.fill,
-          child: Column(
-            children: [
-              IconButton(onPressed: (){}, icon: Icon(Icons.arrow_drop_up), iconSize: 68,),
-              Text("${cart_prod_qty}", style: TextStyle(fontSize: 30.0),),
-              IconButton(onPressed: (){}, icon: Icon(Icons.arrow_drop_down), iconSize: 68,),
-            ],
           ),
         ),
-
       ),
     );
   }
-
-
 }
