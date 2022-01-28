@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Home'),
-                leading: Icon(Icons.home),
+                leading: Icon(Icons.home,  color: Colors.red,),
               ),
             ),
 
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('My Account'),
-                leading: Icon(Icons.person),
+                leading: Icon(Icons.person,  color: Colors.red,),
               ),
             ),
 
@@ -103,15 +103,15 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('My Orders'),
-                leading: Icon(Icons.shopping_basket),
+                leading: Icon(Icons.shopping_basket,  color: Colors.red,),
               ),
             ),
 
             InkWell(
               onTap: () {},
               child: ListTile(
-                title: Text('Categories'),
-                leading: Icon(Icons.dashboard),
+                title: Text('Shopping Cart'),
+                leading: Icon(Icons.shopping_cart, color: Colors.red,),
               ),
             ),
 
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Favourites'),
-                leading: Icon(Icons.favorite),
+                leading: Icon(Icons.favorite,  color: Colors.red,),
               ),
             ),
 
@@ -131,7 +131,6 @@ class _HomePageState extends State<HomePage> {
                 title: Text('Settings'),
                 leading: Icon(
                   Icons.settings,
-                  color: Colors.blue,
                 ),
               ),
             ),
@@ -142,7 +141,6 @@ class _HomePageState extends State<HomePage> {
                 title: Text('About'),
                 leading: Icon(
                   Icons.help,
-                  color: Colors.blue,
                 ),
               ),
             ),
