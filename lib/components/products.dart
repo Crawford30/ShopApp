@@ -48,7 +48,20 @@ class _ProductsState extends State<Products> {
       "picture": "images/products/skt1.jpeg",
       "old_price": "15",
       "price": "20"
-    }
+    },
+
+    {
+      "name": "Blazer 2",
+      "picture": "images/products/blazer2.jpeg",
+      "old_price": "120",
+      "price": "85"
+    },
+    {
+      "name": "Red Dress",
+      "picture": "images/products/dress2.jpeg",
+      "old_price": "50",
+      "price": "90"
+    },
   ];
 
   @override
@@ -90,7 +103,7 @@ class SingleProduct extends StatelessWidget {
         child: Material(
           child: InkWell(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              //========We are passing the value of product to product details page=======
+                //========We are passing the value of product to product details page=======
                 builder: (context) => ProductDetails(
                       product_detail_name: prod_name,
                       product_detail_new_price: prod_price,
@@ -99,26 +112,23 @@ class SingleProduct extends StatelessWidget {
                     ))),
             child: GridTile(
               footer: Container(
-                color: Colors.white70,
-                child: ListTile(
-                  leading: Text(
-                    prod_name,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  title: Text(
-                    "\$$prod_price",
-                    style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.w800),
-                  ),
-                  subtitle: Text(
-                    "\$$prod_old_price",
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.w800,
-                        decoration: TextDecoration.lineThrough),
-                  ),
-                ),
-              ),
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          prod_name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                        ),
+                      ),
+                      Text(
+                        "\$${prod_price}",
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
               child: Image.asset(
                 prod_picture,
                 fit: BoxFit.cover,
