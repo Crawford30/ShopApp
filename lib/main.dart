@@ -5,7 +5,6 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:shopapp/components/horizontal_listview.dart';
 import 'package:shopapp/components/products.dart';
 
-
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -40,6 +39,7 @@ class _HomePageState extends State<HomePage> {
         // animationDuration: Duration(milliseconds: 1000),
         dotSize: 4.0,
         indicatorBgPadding: 2.0,
+        dotBgColor: Colors.transparent,
       ),
     );
 

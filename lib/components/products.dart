@@ -99,7 +99,7 @@ class SingleProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Hero(
-        tag: prod_name,
+        tag: Text("Hero 1"),
         child: Material(
           child: InkWell(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
