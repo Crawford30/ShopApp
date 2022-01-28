@@ -26,8 +26,8 @@ class _ProductDetailsState extends State<ProductDetails> {
         backgroundColor: Colors.red,
         title: InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
             },
             child: const Text('Fashapp')),
         actions: [
@@ -37,7 +37,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 color: Colors.white,
               ),
               onPressed: () {}),
-         
         ],
       ),
       body: ListView(
@@ -282,7 +281,135 @@ class _ProductDetailsState extends State<ProductDetails> {
               )
             ],
           ),
+
+          Divider(),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("Similar Products"),
+          ),
+
+          Container(
+            height: 360.0,
+            child: SimilarProducts(),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class SimilarProducts extends StatefulWidget {
+  const SimilarProducts({Key? key}) : super(key: key);
+
+  @override
+  _SimilarProductsState createState() => _SimilarProductsState();
+}
+
+class _SimilarProductsState extends State<SimilarProducts> {
+  var product_list = [
+    //=====We Create maps(maps and list are used to group things together)====
+
+    {
+      "name": "Dress",
+      "picture": "images/products/dress1.jpeg",
+      "old_price": "50",
+      "price": "90"
+    },
+
+    {
+      "name": "Hills",
+      "picture": "images/products/hills1.jpeg",
+      "old_price": "20",
+      "price": "80"
+    },
+
+    {
+      "name": "Shoe",
+      "picture": "images/products/shoe1.jpg",
+      "old_price": "40",
+      "price": "150"
+    },
+
+    {
+      "name": "Skirt",
+      "picture": "images/products/skt1.jpeg",
+      "old_price": "15",
+      "price": "20"
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        itemCount: product_list.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          return SimilarProduct(
+            prod_name: product_list[index]['name'],
+            prod_picture: product_list[index]['picture'],
+            prod_old_price: product_list[index]['old_price'],
+            prod_price: product_list[index]['price'],
+          );
+        });
+  }
+}
+
+class SimilarProduct extends StatelessWidget {
+  final prod_name;
+  final prod_picture;
+  final prod_old_price;
+  final prod_price;
+
+  SimilarProduct({
+    this.prod_name,
+    this.prod_picture,
+    this.prod_old_price,
+    this.prod_price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Hero(
+        tag: Text("Hero 2"),
+        child: Material(
+          child: InkWell(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                //========We are passing the value of product to product details page=======
+                builder: (context) => ProductDetails(
+                      product_detail_name: prod_name,
+                      product_detail_new_price: prod_price,
+                      product_detail_old_price: prod_old_price,
+                      product_detail_picture: prod_picture,
+                    ))),
+            child: GridTile(
+              footer: Container(
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          prod_name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                        ),
+                      ),
+                      Text(
+                        "\$${prod_price}",
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              child: Image.asset(
+                prod_picture,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
