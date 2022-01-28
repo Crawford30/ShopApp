@@ -282,6 +282,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             ],
           ),
 
+          //=====================SIMILAR PRODUCTS============
           Divider(),
           Padding(
             padding: EdgeInsets.all(8.0),
@@ -289,7 +290,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           ),
 
           Container(
-            height: 360.0,
+            height: 340.0,
             child: SimilarProducts(),
           ),
         ],
