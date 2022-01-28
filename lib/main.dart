@@ -4,6 +4,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 //====My Own imports
 import 'package:shopapp/components/horizontal_listview.dart';
 import 'package:shopapp/components/products.dart';
+import 'package:shopapp/pages/cart.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -60,7 +61,10 @@ class _HomePageState extends State<HomePage> {
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
-              onPressed: () {})
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Cart()));
+              })
         ],
       ),
       drawer: Drawer(
@@ -87,7 +91,10 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Home'),
-                leading: Icon(Icons.home,  color: Colors.red,),
+                leading: Icon(
+                  Icons.home,
+                  color: Colors.red,
+                ),
               ),
             ),
 
@@ -95,7 +102,10 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('My Account'),
-                leading: Icon(Icons.person,  color: Colors.red,),
+                leading: Icon(
+                  Icons.person,
+                  color: Colors.red,
+                ),
               ),
             ),
 
@@ -103,15 +113,24 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('My Orders'),
-                leading: Icon(Icons.shopping_basket,  color: Colors.red,),
+                leading: Icon(
+                  Icons.shopping_basket,
+                  color: Colors.red,
+                ),
               ),
             ),
 
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Cart()));
+              },
               child: ListTile(
                 title: Text('Shopping Cart'),
-                leading: Icon(Icons.shopping_cart, color: Colors.red,),
+                leading: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.red,
+                ),
               ),
             ),
 
@@ -119,7 +138,10 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Favourites'),
-                leading: Icon(Icons.favorite,  color: Colors.red,),
+                leading: Icon(
+                  Icons.favorite,
+                  color: Colors.red,
+                ),
               ),
             ),
 
