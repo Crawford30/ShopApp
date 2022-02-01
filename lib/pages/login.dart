@@ -63,8 +63,6 @@ class _LoginState extends State<Login> {
       loading = true;
     });
 
-    // try {
-
     //======Create google sign in account===
 
     GoogleSignInAccount? googleUser =
@@ -86,7 +84,7 @@ class _LoginState extends State<Login> {
         await firebaseAuth.signInWithCredential(credential);
 
     if (authResult.user != null) {
-      //===look for the user if the firebbase id is equal to the uid
+      //===look for the user if the firebase id is equal to the uid
       final QuerySnapshot result = await FirebaseFirestore.instance
           .collection("users")
           .where("id", isEqualTo: authResult.user?.uid)
@@ -128,32 +126,12 @@ class _LoginState extends State<Login> {
 
         //===Go back to homepage===
 
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
       }
-    } else {}
-
-    //  GoogleSignInAccount? account = await googleSignIn.signIn();
-    //
-    //  GoogleSignInAuthentication? authentication =
-    //     await account?.authentication;
-    //
-    //  OAuthCredential credential = GoogleAuthProvider.credential(
-    //     idToken: authentication?.idToken,
-    //     accessToken: authentication?.accessToken);
-    //
-    //  UserCredential authResult =
-    //     await firebaseAuth.signInWithCredential(credential);
-    //
-    // if(authResult.user != null){
-    //   //===Check if a user is signed out ===
-    //   final QuerySnapshot result = await FirebaseFirestore.instance.collection("users").where("id", isEqualTo, authResult.user.uid).getDocuments();
-    //
-    //
-    // } else {
-    //
-    // }
-    // final User? user = authResult.user;
-    //
-    // return user;
+    } else {
+      Fluttertoast.showToast(msg: "Login failed :(");
+    }
   }
 
   @override
