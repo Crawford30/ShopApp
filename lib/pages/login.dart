@@ -240,42 +240,71 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(),
-                    ),
-                    Divider(
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Other Login  option",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0),
-                    ),
+
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        color: Colors.red,
-                        elevation: 0.0,
-                        child: MaterialButton(
-                          onPressed: () {
-                            handleSignIn();
-                          },
-                          minWidth: MediaQuery.of(context).size.width,
-                          child: Text(
-                            "Google",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22.0),
-                          ),
-                        ),
+                      child: Text(
+                        "Forgot Password",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: RichText(
+                        text: TextSpan(
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16.0),
+                            children: const [
+                              TextSpan(
+                                  text: "Don't have an account? Click here to"),
+                              TextSpan(
+                                  text: " Sign up!",
+                                  style: TextStyle(color: Colors.red)),
+                            ]),
+                      ),
+                    ),
+
+                    // Expanded(
+                    //   child: Container(),
+                    // ),
+                    // Divider(
+                    //   color: Colors.white,
+                    // ),
+                    // Text(
+                    //   "Other Login  option",
+                    //   textAlign: TextAlign.center,
+                    //   style: TextStyle(
+                    //       color: Colors.white,
+                    //       fontWeight: FontWeight.bold,
+                    //       fontSize: 14.0),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Material(
+                    //     borderRadius: BorderRadius.circular(20.0),
+                    //     color: Colors.red,
+                    //     elevation: 0.0,
+                    //     child: MaterialButton(
+                    //       onPressed: () {
+                    //         handleSignIn();
+                    //       },
+                    //       minWidth: MediaQuery.of(context).size.width,
+                    //       child: Text(
+                    //         "Google",
+                    //         textAlign: TextAlign.center,
+                    //         style: TextStyle(
+                    //             color: Colors.white,
+                    //             fontWeight: FontWeight.bold,
+                    //             fontSize: 22.0),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
