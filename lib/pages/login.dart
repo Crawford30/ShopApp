@@ -159,7 +159,7 @@ class _LoginState extends State<Login> {
             child: Center(
               child: Form(
                 key: _formKey,
-                child: Column(
+                child: ListView(
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -248,6 +248,7 @@ class _LoginState extends State<Login> {
                     ),
                     Text(
                       "Other Login  option",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
