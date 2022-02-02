@@ -16,8 +16,12 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final GoogleSignIn googleSignIn = GoogleSignIn();
-
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+
+  TextEditingController _emailTextController = TextEditingController();
+  TextEditingController _passwordTextController = TextEditingController();
+
   late SharedPreferences preferences;
   bool loading = false;
   bool isLoggedIn = false;
@@ -143,6 +147,102 @@ class _LoginState extends State<Login> {
             'images/back.jpg',
             fit: BoxFit.cover,
             width: double.infinity,
+          ),
+          Container(
+            color: Colors.black.withOpacity(0.4),
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 200.0),
+            child: Center(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Colors.white.withOpacity(0.5),
+                        elevation: 0.0,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 12.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              hintText: "Email",
+                              icon: Icon(Icons.email),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                String pattern =
+                                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                                RegExp regExp = RegExp(pattern);
+                                if (!regExp.hasMatch(value!)) {
+                                  return "Please make sure your email address is valid";
+                                } else {
+                                  return null;
+                                }
+                              }
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                            controller: _emailTextController,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Colors.white.withOpacity(0.5),
+                        elevation: 0.0,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 12.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              hintText: "Password",
+                              icon: Icon(Icons.lock_outline),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "The password field can not be empty";
+                              } else if (value.length < 6) {
+                                return "Password has to be at least 6 characters long";
+                              }
+
+                              return null;
+                            },
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: _passwordTextController,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Colors.red,
+                        elevation: 0.0,
+                        child: MaterialButton(
+                          onPressed: () {},
+                          minWidth: MediaQuery.of(context).size.width,
+                          child: Text(
+                            "Login",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
           Container(
             alignment: Alignment.topCenter,
