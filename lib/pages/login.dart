@@ -163,15 +163,15 @@ class _LoginState extends State<Login> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        color: Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.white.withOpacity(0.8),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),
                           child: TextFormField(
                             decoration: InputDecoration(
                               hintText: "Email",
-                              icon: Icon(Icons.email),
+                              icon: Icon(Icons.email_outlined),
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -194,8 +194,8 @@ class _LoginState extends State<Login> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        color: Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.white.withOpacity(0.8),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),
