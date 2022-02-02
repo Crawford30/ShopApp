@@ -145,8 +145,9 @@ class _LoginState extends State<Login> {
         children: [
           Image.asset(
             'images/back.jpg',
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
             width: double.infinity,
+            height: double.infinity,
           ),
           Container(
             color: Colors.black.withOpacity(0.4),
@@ -223,13 +224,48 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.all(8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
-                        color: Colors.red,
+                        color: Colors.blue,
                         elevation: 0.0,
                         child: MaterialButton(
                           onPressed: () {},
                           minWidth: MediaQuery.of(context).size.width,
                           child: Text(
                             "Login",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "Other Login  option",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Colors.red,
+                        elevation: 0.0,
+                        child: MaterialButton(
+                          onPressed: () {
+                            handleSignIn();
+                          },
+                          minWidth: MediaQuery.of(context).size.width,
+                          child: Text(
+                            "Google",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
@@ -265,22 +301,6 @@ class _LoginState extends State<Login> {
             ),
           )
         ],
-      ),
-      bottomNavigationBar: Container(
-        child: Padding(
-          padding: const EdgeInsets.only(
-              left: 12.0, right: 12.0, top: 8.0, bottom: 8.0),
-          child: FlatButton(
-            color: Colors.red.shade900,
-            onPressed: () {
-              handleSignIn();
-            },
-            child: Text(
-              "Sign in/Sign up with google",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
       ),
     );
   }
