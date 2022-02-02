@@ -1,76 +1,23 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shopapp/pages/signup.dart';
-import 'home.dart';
+import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+class _SignUpState extends State<SignUp> {
+  bool loading = false;
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
-
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
-
-  late SharedPreferences preferences;
-  bool loading = false;
-  bool isLoggedIn = false;
-
-  @override
-  void initState() {
-    // Calls the initial state of the class
-    super.initState();
-    isSignedIn();
-  }
-
-  void isSignedIn() async {
-    //=https://stackoverflow.com/questions/54445610/the-method-signinwithgoogle-isnt-defined-for-the-class-firebaseauth
-
-    //===If its true
-    if (isLoggedIn) {
-      //===With push replacement, the user doesnt have the ability to hit the back button to go back to the previous screen(login in scrrent)
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
-    }
-
-    //===Set state of loading because the user is logged in
-    setState(() {
-      loading = false;
-    });
-  }
-
-  //======If not logged in===
-  Future handleSignIn() async {
-    //await Firebase.initializeApp();
-    preferences = await SharedPreferences.getInstance();
-    setState(() {
-      loading = true;
-    });
-
-    //===Show toast if successfully done
-    Fluttertoast.showToast(msg: "Login was successful");
-
-    //===Set loading state
-    setState(() {
-      loading = false;
-    });
-
-    //===Go back to homepage===
-
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
-  }
+  TextEditingController _nameTextController = TextEditingController();
+  TextEditingController _confirmPasswordTextController =
+      TextEditingController();
+  late String gender;
 
   @override
   Widget build(BuildContext context) {
@@ -89,12 +36,40 @@ class _LoginState extends State<Login> {
             height: double.infinity,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 200.0),
+            padding: const EdgeInsets.only(top: 120.0),
             child: Center(
               child: Form(
                 key: _formKey,
                 child: ListView(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.white.withOpacity(0.8),
+                        elevation: 0.0,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 12.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                hintText: "Full Name",
+                                icon: Icon(Icons.person_outline),
+                                border: InputBorder.none,
+
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "The name field can not be empty";
+                              }
+
+                              return null;
+                            },
+                            keyboardType: TextInputType.text,
+                            controller: _nameTextController,
+                          ),
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
@@ -157,6 +132,34 @@ class _LoginState extends State<Login> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.white.withOpacity(0.8),
+                        elevation: 0.0,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 12.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                hintText: "Confirm Password",
+                                icon: Icon(Icons.lock_outline),
+                                border: InputBorder.none),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "The password field can not be empty";
+                              } else if (value.length < 6) {
+                                return "Password has to be at least 6 characters long";
+                              }
+
+                              return null;
+                            },
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: _confirmPasswordTextController,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
+                      child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         color: Colors.blue,
                         elevation: 0.0,
@@ -164,7 +167,7 @@ class _LoginState extends State<Login> {
                           onPressed: () {},
                           minWidth: MediaQuery.of(context).size.width,
                           child: Text(
-                            "Login",
+                            "Register",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
@@ -176,24 +179,12 @@ class _LoginState extends State<Login> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Forgot Password",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUp()));
+                          Navigator.pop(context);
                         },
                         child: Text(
-                          'Sign Up',
+                          'Login',
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.red),
                         ),
