@@ -18,6 +18,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _confirmPasswordTextController =
       TextEditingController();
   late String gender;
+  String groupValue = "male";
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +53,9 @@ class _SignUpState extends State<SignUp> {
                           padding: const EdgeInsets.only(left: 12.0),
                           child: TextFormField(
                             decoration: InputDecoration(
-                                hintText: "Full Name",
-                                icon: Icon(Icons.person_outline),
-                                border: InputBorder.none,
-
+                              hintText: "Full Name",
+                              icon: Icon(Icons.person_outline),
+                              border: InputBorder.none,
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -67,6 +67,42 @@ class _SignUpState extends State<SignUp> {
                             keyboardType: TextInputType.text,
                             controller: _nameTextController,
                           ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
+                      child: Container(
+                        color: Colors.white.withOpacity(0.4),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: ListTile(
+                                title: Text(
+                                  "Male",
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                trailing: Radio(
+                                    value: "male",
+                                    groupValue: groupValue,
+                                    onChanged: (e) => valueChanged(e)),
+                              ),
+                            ),
+                            Expanded(
+                              child: ListTile(
+                                title: Text(
+                                  "Female",
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                trailing: Radio(
+                                    value: "female",
+                                    groupValue: groupValue,
+                                    onChanged: (e) => valueChanged(e)),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -161,18 +197,18 @@ class _SignUpState extends State<SignUp> {
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
-                        color: Colors.blue,
+                        color: Colors.red.shade700,
                         elevation: 0.0,
                         child: MaterialButton(
                           onPressed: () {},
                           minWidth: MediaQuery.of(context).size.width,
                           child: Text(
-                            "Register",
+                            "Sign Up",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 22.0),
+                                fontSize: 20.0),
                           ),
                         ),
                       ),
@@ -186,7 +222,7 @@ class _SignUpState extends State<SignUp> {
                         child: Text(
                           'Login',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.red),
+                          style: TextStyle(color: Colors.blue),
                         ),
                       ),
                     ),
@@ -218,5 +254,15 @@ class _SignUpState extends State<SignUp> {
         ],
       ),
     );
+  }
+
+  valueChanged(e) {
+    setState(() {
+      if (e == "male") {
+        groupValue = e;
+      } else if (e == "female") {
+        groupValue = e;
+      }
+    });
   }
 }
