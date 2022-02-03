@@ -99,7 +99,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withOpacity(0.4),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),
@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withOpacity(0.4),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),

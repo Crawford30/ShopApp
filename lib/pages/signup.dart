@@ -47,7 +47,7 @@ class _SignUpState extends State<SignUp> {
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withOpacity(0.4),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),
@@ -73,7 +73,10 @@ class _SignUpState extends State<SignUp> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Container(
-                        color: Colors.white.withOpacity(0.4),
+                        decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.4),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
                         child: Row(
                           children: [
                             Expanded(
@@ -110,7 +113,7 @@ class _SignUpState extends State<SignUp> {
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withOpacity(0.4),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),
@@ -141,7 +144,7 @@ class _SignUpState extends State<SignUp> {
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withOpacity(0.4),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),
@@ -169,7 +172,7 @@ class _SignUpState extends State<SignUp> {
                       padding: const EdgeInsets.fromLTRB(14.0, 8.0, 14.0, 8.0),
                       child: Material(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withOpacity(0.4),
                         elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0),
