@@ -84,7 +84,7 @@ class _SignUpState extends State<SignUp> {
                                 title: Text(
                                   "Male",
                                   textAlign: TextAlign.end,
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.black54),
                                 ),
                                 trailing: Radio(
                                     value: "male",
@@ -97,7 +97,7 @@ class _SignUpState extends State<SignUp> {
                                 title: Text(
                                   "Female",
                                   textAlign: TextAlign.end,
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.black54),
                                 ),
                                 trailing: Radio(
                                     value: "female",
